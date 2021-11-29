@@ -3,6 +3,11 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-title>Time Fighter</ion-title>
+        <ion-buttons slot="primary" >
+          <ion-button color="primary" fill="solid" @click="info">
+            <ion-icon :icon="infoIcon"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     
@@ -22,8 +27,9 @@
 </template>
 
 <script>
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import {IonButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from '@ionic/vue';
 import { defineComponent } from 'vue';
+import { informationCircleOutline } from 'ionicons/icons';
 
 export default defineComponent({
   name: 'Home',
@@ -32,7 +38,16 @@ export default defineComponent({
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonButtons,
+    IonButton
+  },
+  setup () {
+    return {
+      infoIcon: informationCircleOutline,
+      started: false,
+      counterInterval: null
+    }
   }
 });
 </script>
