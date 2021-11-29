@@ -19,15 +19,23 @@
       </ion-header>
     
       <div id="container">
-        <strong>Yes //TODO: botó comptador</strong>
-        <p>Alba <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+       <ion-button color="primary" @click="tap">Tap Me</ion-button></div>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
-import {IonButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar} from '@ionic/vue';
+import {
+  alertController,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonPage,
+  IonTitle,
+  IonToolbar
+} from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { informationCircleOutline } from 'ionicons/icons';
 
@@ -40,13 +48,26 @@ export default defineComponent({
     IonTitle,
     IonToolbar,
     IonButtons,
-    IonButton
+    IonButton,
+    IonIcon
   },
   setup () {
     return {
       infoIcon: informationCircleOutline,
       started: false,
       counterInterval: null
+    }
+  },
+  methods: {
+    async info() {
+      const alert = await alertController
+          .create({
+            header: 'Time Figther 1.0',
+            subHeader: 'Creat per Alba Rius Rivas',
+            message: 'Podeu trobar el codi font a: <a href="https://github.com/AlbaRiius/ComptadorIonic">https://github.com/AlbaRiius/ComptadorIonic</a>',
+            buttons: ['OK'],
+          });
+      await alert.present();
     }
   }
 });
